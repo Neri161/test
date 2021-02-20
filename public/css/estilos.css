@@ -1,0 +1,66 @@
+body{
+    background-image: url("../../../repo/Public/img/fondo.jpg");
+    background-size: 100%;
+}
+#login{
+    margin-top: 5%;
+    padding: 10px;
+}
+#formulario{
+    border:0.5px solid white;
+    background-color: rgb(123,205,255);
+    border-radius: 10px;
+}
+#contenedor{
+    margin-top: 2%;
+    padding: 10px;
+
+}
+#contenedor-2{
+    padding: 10px;
+    background-color: rgb(123,205,255);
+    border-radius: 10px;
+}
+#alerta{
+    color:rgb(111,109,255);
+}
+#formulario-admin{
+    border:0.5px solid white;
+    background-color: rgb(149,213,38);
+    border-radius: 10px;
+}
+#contenedor-admin{
+    margin-top: 2%;
+    padding: 10px;
+
+}
+#contenedor-2-admin{
+    padding: 10px;
+    background-color: rgb(149,213,38);
+    border-radius: 10px;
+}
+#btn-admin{
+    background-color: rgb(255,159,82);
+    color: white;
+    border-radius: 10px;
+}
+#formulario-p{
+    border:0.5px solid white;
+    background-color: rgb(254,194,108);
+    border-radius: 10px;
+}
+#contenedor-p{
+    margin-top: 2%;
+    padding: 10px;
+
+}
+#contenedor-2-p{
+    padding: 10px;
+    background-color: rgb(254,194,108);
+    border-radius: 10px;
+}
+#btn-p{
+    background-color: rgb(254,194,108);
+    color: white;
+    border-radius: 10px;
+}
