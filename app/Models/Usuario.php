@@ -50,46 +50,4 @@ class Usuario extends Conexion
         $resultado = $pre->get_result();
         return $resultado->fetch_object();
     }
-    //verificar si el usuarrio tiene direccion
-    static function verificarDireccion($id){
-        $conexion = new Conexion();
-        $pre = mysqli_prepare($conexion->conexion,"SELECT * FROM direcciones WHERE id_usuario=?");
-        $pre->bind_param("s", $id);
-        $pre->execute();
-        $resultado = $pre->get_result();
-        return $resultado->fetch_object();
-    }
-    //verificar si el usuario tiene tarjeta
-    static function verificarTarjeta($id){
-        $conexion = new Conexion();
-        $pre = mysqli_prepare($conexion->conexion,"SELECT * FROM tarjetas_credito WHERE id_usuario=?");
-        $pre->bind_param("s", $id);
-        $pre->execute();
-        $resultado = $pre->get_result();
-        return $resultado->fetch_object();
-    }
-    //seleccionar productos
-    static function Productosall()
-    {
-        $conexion = new Conexion();
-        $pre = mysqli_prepare($conexion->conexion,"SELECT * FROM productos");
-        $pre->execute();
-        $resultado = $pre->get_result();
-        while ($y=mysqli_fetch_assoc($resultado)){
-            $t[]=$y;
-        }
-        return $t;
-    }
-    //seleccionar envios
-    static function envioAll()
-    {
-        $conexion = new Conexion();
-        $pre = mysqli_prepare($conexion->conexion,"SELECT * FROM envio");
-        $pre->execute();
-        $resultado = $pre->get_result();
-        while ($y=mysqli_fetch_assoc($resultado)){
-            $t[]=$y;
-        }
-        return $t;
-    }
 }

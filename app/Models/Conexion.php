@@ -9,7 +9,7 @@ class Conexion
         $host="localhost";
         $user="root";
         $pass="";
-        $db="tiendamusica";
+        $db="test";
         $this->conexion=mysqli_connect($host,$user,$pass,$db);
         mysqli_query($this->conexion,"SET NAMES 'utf8'");
     }

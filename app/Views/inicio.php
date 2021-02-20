@@ -1,5 +1,4 @@
 <?php
-error_reporting(0);
 if(!isset($_SESSION["idUsuario"]))
     session_start();
 $varsesion='';
@@ -7,7 +6,7 @@ if(isset($_SESSION["idUsuario"]))
     $varsesion = $_SESSION["idUsuario"];
 
 if($varsesion==null || $varsesion=''){
-    require 'app/Views/usuario/login.php';
+    require 'app/Views/login.php';
     die();
 }
 ?>
@@ -24,7 +23,7 @@ if($varsesion==null || $varsesion=''){
 <body>
 <!-- Navbar en la parte superior que se deliza lo largo de la pagina -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="../../../repo/index.php?controller=Usuario&action=dologin">Aner Vinyl </a>
+            <a class="navbar-brand" href="../../../test/index.php?controller=Usuario&action=dologin">Aner Vinyl</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -52,7 +51,7 @@ if($varsesion==null || $varsesion=''){
                 <!--Elementos de la derecha -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../../repo/index.php?controller=Usuario&action=carrito">Carrito(0)</a>
+                        <a class="nav-link" href="../../../test/index.php?controller=Usuario&action=carrito">Carrito(0)</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="true">
@@ -63,21 +62,9 @@ if($varsesion==null || $varsesion=''){
                             ?>
                         </a>
                         <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../../../repo/index.php?controller=Usuario&action=perfil">Perfil</a>
-                            <?php
-                            if(!isset($_SESSION["idDireccion"])){
-                            ?>
-                            <a class="dropdown-item" href="../../../repo/index.php?controller=Usuario&action=registroDatos">Agregar Direccion</a>
-                            <?php
-                            }
-                            if(!isset($_SESSION["folio_Tarjeta"])){
-                                ?>
-                                <a class="dropdown-item" href="../../../repo/index.php?controller=Usuario&action=registroDatos">Agregar Tarjeta</a>
-                                <?php
-                            }
-                            ?>
+                            <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=perfil">Perfil</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../../../repo/index.php?controller=Usuario&action=logout">Cerrar Sesion</a>
+                            <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=logout">Cerrar Sesion</a>
                         </div>
                     </li>
                 </ul>
@@ -86,40 +73,9 @@ if($varsesion==null || $varsesion=''){
 <div class="container">
     <br>
     <div class="row">
-        <?php
-            if(isset($productos)){
-                foreach ($productos as $valor){
-                ?>
         <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top" src="data:<?php echo $valor['tipoi']; ?>;base64,<?php echo  base64_encode($valor['imagen']); ?>" width="200"></center>
-                <div class="card-body">
-                    <span><?php echo $valor['nombre']; ?></span>
-                    <h5 class="card-title">$<?php echo $valor['precio']; ?></h5>
-                    <p class="card-text">
-                        <?php if($valor['tipo']=="1"){echo "CD";}else{echo "Vinyl";} ?>
-                    </p>
-                    <form action="index.php?controller=Envio&action=comprar" method="post">
-                        <div class="mostrar">
-                            <input type="text" class="carrito" name="id" id="id" value="<?php echo $valor['id']; ?>">
-                            <input type="text" class="carrito" name="idDireccion" id="id" value="<?php echo $_SESSION["idDireccion"];?>">
-                        </div>
-                        <?php
-                        if(isset($_SESSION["idDireccion"]) && isset($_SESSION["folio_Tarjeta"])){?>
-                        <button class="btn btn-primary form-control" name="accion" value="agregar" id="agregar" type="submit">Comprar</button>
-                            <?php
-                        }else{
-                            echo "<i>Agrega tarjeta o Direccion</i>";
-                        }
-                            ?>
-                            </form>
-                </div>
-            </div>
+
         </div>
-        <?php
-            }
-            }
-        ?>
     </div>
 </div>
 
@@ -130,39 +86,3 @@ if($varsesion==null || $varsesion=''){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
-function verificarUsuario(){
-        if((!isset($_POST["correo"])) || (!isset($_POST["contrasenia"]))){
-            $respuesta="Datos Incorrectos";
-            echo "<script> alert('".$respuesta."'); </script>";
-            return false;
-        }
-        $correo=$_POST["correo"];
-        $contrasenia=$_POST["contrasenia"];
-        $verificar = Usuario::verificarUsuario($correo);
-        if ($verificar) {
-            if (password_verify($contrasenia, $verificar->contrasenia)) {
-                session_start();
-                $_SESSION["id"]=$verificar->id;
-                $_SESSION["nombre"]=$verificar->nombre;
-                $_SESSION["aPaterno"]=$verificar->apellido_Paterno;
-                $_SESSION["aMaterno"]=$verificar->iapellidoMaterno;
-                $_SESSION["direccion"]=$verificar->direccion;
-                $_SESSION["edad"]=$verificar->edad;
-                $_SESSION["telefono"]=$verificar->telefono;
-                $_SESSION["sexo"]=$verificar->sexo;
-                $verificarDirecciones=Usuario::verificarDireccion($_SESSION["id"]);
-                header("Location:/adopcion/index.php?controller=Usuario&action=vistaCatalogo");
-            }else{
-                $Contrasenia= "Contraseña incorrecta";
-                echo "<script> alert('".$Contrasenia."'); </script>";
-                require "app/Views/login.php"
-            }
-            
-            
-        }else{
-            $estatus="Datos Incorrectos";
-            echo "<script> alert('".$estatus."'); </script>";
-            
-            require "app/Views/login.php";
-        }
-    }

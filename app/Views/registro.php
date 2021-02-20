@@ -3,7 +3,7 @@ error_reporting(0);
 if(!isset($_SESSION["idUsuario"]))
     session_start();
 if(isset($_SESSION["idUsuario"])){
-    require 'app/Views/usuario/inicio.php';
+    require 'app/Views/inicio.php';
     die();
 }
 ?>
@@ -19,6 +19,7 @@ if(isset($_SESSION["idUsuario"])){
     <link rel="stylesheet" type="text/css" href="../../../repo/Public/css/estilos.css">
 </head>
 <body>
+
 <div class="container col-md-12" id="contenedor">
     <div class="container col-md-offset-4 col-md-4" id="contenedor-2">
         <div class="panel panel-body col-md-12" id="formulario">

@@ -3,7 +3,7 @@ error_reporting(0);
     if(!isset($_SESSION["idUsuario"]))
         session_start();
     if(isset($_SESSION["idUsuario"])){
-        require 'app/Views/usuario/inicio.php';
+        require 'app/Views/inicio.php';
         die();
     }
 ?>
