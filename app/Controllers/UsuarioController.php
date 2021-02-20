@@ -95,4 +95,7 @@ class UsuarioController
         $_SESSION["tipo"]=$_FILES['image']['type'];
         header("location:../../../test/index.php?controller=Usuario&action=perfil");
     }
+    function cuestionario(){
+        require 'app/Views/Cuestionario.php';
+    }
 }

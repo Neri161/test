@@ -22,8 +22,8 @@ if($varsesion==null || $varsesion=''){
 </head>
 <body>
 <!-- Navbar en la parte superior que se deliza lo largo de la pagina -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="../../../test/index.php?controller=Usuario&action=dologin">Aner Vinyl</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+            <a class="navbar-brand" href="../../../test/index.php?controller=Usuario&action=dologin">ANGKET</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,26 +33,18 @@ if($varsesion==null || $varsesion=''){
                     <!--Menu desplegable -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                            TOP
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">DIA</a>
+                            <a class="dropdown-item" href="#">SEMANA</a>
+                            <a class="dropdown-item" href="#">MES</a>
+                            <a class="dropdown-item" href="#">TOP 10</a>
                         </div>
                     </li>
                 </ul>
-                <!--Busqueda -->
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
                 <!--Elementos de la derecha -->
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../../test/index.php?controller=Usuario&action=carrito">Carrito(0)</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="true">
                             <?php
@@ -73,8 +65,10 @@ if($varsesion==null || $varsesion=''){
 <div class="container">
     <br>
     <div class="row">
+            <form action="index.php?controller=Usuario&action=cuestionario" method="post" class="col-md-12">
+                <button class="btn btn-primary form-control" style="margin-bottom: 3%;" id="guardar"> Contestar Cuestionario</button>
+            </form>
         <div class="col-md-3">
-
         </div>
     </div>
 </div>

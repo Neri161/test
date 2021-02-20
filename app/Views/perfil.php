@@ -23,8 +23,8 @@ if($varsesion==null || $varsesion=''){
 </head>
 <body>
 <!-- Navbar en la parte superior que se deliza lo largo de la pagina -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="../../../test/index.php?controller=Usuario&action=dologin">Aner Vinyl</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <a class="navbar-brand" href="../../../test/index.php?controller=Usuario&action=dologin">ANGKET</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -76,9 +76,7 @@ if($varsesion==null || $varsesion=''){
     <form action="index.php?controller=Usuario&action=actualizarFoto&id=<?php echo $_SESSION['idUsuario']; ?>" method="post" enctype="multipart/form-data">
         <div class="image-upload">
             <center><label for="file-input">
-                    <img  src="data:<?php echo $_SESSION['tipo']; ?>;base64,<?php echo  base64_encode($_SESSION['foto']); ?>" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto"
-                         data-toggle="popover"
-                         data-content="Cambiar Foto">
+                    <img  src="data:<?php echo $_SESSION['tipo']; ?>;base64,<?php echo  base64_encode($_SESSION['foto']); ?>" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto">
                 </label></center>
             <input id="file-input" name="image" type="file" required/>
         </div>
