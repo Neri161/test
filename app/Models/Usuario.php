@@ -84,5 +84,28 @@ class Usuario extends Conexion
         }
         return $t;
     }
-
+    static function dia(){
+        $dia=(int)date("d");
+        $conexion = new Conexion();
+        $pre = mysqli_prepare($conexion->conexion,"SELECT * FROM respuestas where dia=?");
+        $pre->bind_param("i", $dia);
+        $pre->execute();
+        $resultado=$pre->get_result();
+        while ($y=mysqli_fetch_assoc($resultado)){
+            $t[]=$y;
+        }
+        return $t;
+    }
+    static function semana(){
+        $dia=(int)date("W");
+        $conexion = new Conexion();
+        $pre = mysqli_prepare($conexion->conexion,"SELECT * FROM respuestas where semana=?");
+        $pre->bind_param("i", $dia);
+        $pre->execute();
+        $resultado=$pre->get_result();
+        while ($y=mysqli_fetch_assoc($resultado)){
+            $t[]=$y;
+        }
+        return $t;
+    }
 }

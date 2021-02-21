@@ -109,4 +109,54 @@ class UsuarioController
 
         require 'app/Views/resultado.php';
     }
+    function dia(){
+        $dia=Usuario::dia();
+        $semana=Usuario::semana();
+        $usuario=Usuario::usuarios();
+        $hombres=0;
+        $mujeres=0;
+        $aciertos=0;
+        foreach ($dia as $valor){
+            foreach ($usuario as $valor1){
+                if ($valor1["id_usuario"]==$valor["id_Usuario"] && $valor1["genero"]=="H"){
+                $hombres++;
+                $aciertos=$aciertos+$valor["aciertos"];
+                }
+            }
+        }
+        $promedioHD=$aciertos/$hombres;
+        $aciertos=0;
+        foreach ($dia as $valor){
+            foreach ($usuario as $valor1){
+                if ($valor1["id_usuario"]==$valor["id_Usuario"] && $valor1["genero"]=="M"){
+                    $mujeres++;
+                    $aciertos=$aciertos+$valor["aciertos"];
+                }
+            }
+        }
+        $promedioMD=$aciertos/$mujeres;
+        $hombres=0;
+        $mujeres=0;
+        $aciertos=0;
+        foreach ($semana as $valor){
+            foreach ($usuario as $valor1){
+                if ($valor1["id_usuario"]==$valor["id_Usuario"] && $valor1["genero"]=="H"){
+                    $hombres++;
+                    $aciertos=$aciertos+$valor["aciertos"];
+                }
+            }
+        }
+        $promedioHS=$aciertos/$hombres;
+        $aciertos=0;
+        foreach ($semana as $valor){
+            foreach ($usuario as $valor1){
+                if ($valor1["id_usuario"]==$valor["id_Usuario"] && $valor1["genero"]=="M"){
+                    $mujeres++;
+                    $aciertos=$aciertos+$valor["aciertos"];
+                }
+            }
+        }
+        $promedioMS=$aciertos/$mujeres;
+        require 'app/Views/dia.php';
+    }
 }

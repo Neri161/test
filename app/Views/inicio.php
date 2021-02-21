@@ -36,7 +36,7 @@ if($varsesion==null || $varsesion=''){
                             TOP
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">DIA</a>
+                            <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=dia">DIA</a>
                             <a class="dropdown-item" href="#">SEMANA</a>
                             <a class="dropdown-item" href="#">TOP 10</a>
                         </div>
