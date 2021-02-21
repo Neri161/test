@@ -27,8 +27,20 @@ class RespuestasController
             $resultado+=1;
         if ($_POST["10"])
             $resultado+=1;
+        $respuesta = new Respuestas();
+        $respuesta->aciertos=$resultado;
+        $respuesta->idUsuario=(int)$_GET["idUsuario"];
+        $respuesta->dia=(int)date("d");
+        $respuesta->semana=(int)date ( "W");
+        $respuesta->anio=(int)date("Y");
+        $resultadoAnterior=Respuestas::respuestaAnterior();
+        session_start();
+        $_SESSION["respuesta"]=$resultadoAnterior->aciertos;
+        $_SESSION["aciertos"]=$resultado;
+        echo  var_dump($_SESSION["respuesta"]);
+        $respuesta->crear();
+        header("location:../../../test/index.php?controller=Usuario&action=resultado");
 
-        echo $resultado;
     }
 
 }

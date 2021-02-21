@@ -17,7 +17,7 @@ if($varsesion==null || $varsesion=''){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Perfil</title>
+    <title>Resultado</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../../../repo/Public/css/inicio.css">
 </head>
@@ -62,79 +62,37 @@ if($varsesion==null || $varsesion=''){
         </ul>
     </div>
 </nav>
-<div class="container">
-    <br>
-    <form action="index.php?controller=Usuario&action=actualizarFoto&id=<?php echo $_SESSION['idUsuario']; ?>" method="post" enctype="multipart/form-data">
-        <div class="image-upload">
-            <center><label for="file-input">
-                    <img  src="data:<?php echo $_SESSION['tipo']; ?>;base64,<?php echo  base64_encode($_SESSION['foto']); ?>" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto">
-                </label></center>
-            <input id="file-input" name="image" type="file" required/>
-        </div>
-        <div class="mostrar" id="mostrar">
-            <center><button  class="btn btn-success form-control col-md-3" style="margin-bottom: 3%;" id="guardar">Actualizar Foto</button></center>
-        </div>
+<main class="container">
+    <h2 class="text-center">TU PUNTAJE ES DE <?php echo $_SESSION["aciertos"];?></h2>
+    <?php
+    $comparacion=$_SESSION["respuesta"]-$_SESSION["aciertos"];
+    if ($comparacion>=1){
+        ?>
+        <h1 class="text-center" style="color: red;">EL USUARIO ANTERIOR TE GANO POR <?php echo $comparacion;?></h1>
+        <?php
+    }
+    if($comparacion<=-1){
+        $comparacion=$comparacion*(-1);
+        ?>
+        <h1 class="text-center" style="color: orange;">LE GANASTE AL USUARIO ANTERIOR POR <?php echo $comparacion;?></h1>
 
+        <?php
+    }
+    if ($comparacion==0){
+        ?>
+        <h1 class="text-center" style="color: orange;">EMPATADO CON EL USUARIO ANTERIOR</h1>
+        <?php
+    }
+
+
+    ?>
+    <form action="../../../test/index.php?controller=Usuario&action=dologin" method="post">
+        <button class="btn-primary btn col-md-12">Regresar Al Login</button>
     </form>
-    <br>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label for="nombre">Nombre: </label>
-                    <input type="text" name="nombre" id="nombre" readonly class="form-control" placeholder="Nombre" required value="<?php echo $_SESSION['nombre']; ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="paterno">Apellido Paterno: </label>
-                    <input type="text" name="paterno" id="paterno" readonly class="form-control" placeholder="Apellido Paterno" required value="<?php echo $_SESSION['apellidoPaterno']; ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="materno">Apellido Materno: </label>
-                    <input type="text" name="materno" id="materno" readonly class="form-control" placeholder="Apellido Materno" required value="<?php echo $_SESSION['apellidoMaterno']; ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="correo">Correo:</label>
-                    <input type="email" id="correo" name="correo" readonly class="form-control" value="<?php echo $_SESSION['correo']; ?>">
-                </div>
-            </div>
-    <div class="row">
-        <h2 class="text-center col-md-12">HISTORIAL</h2>
-        <table class="table table-hover table-active" border="1">
-            <thead>
-            <tr>
-                <th>Aciertos</th>
-                <th>Dia</th>
-                <th>Semana</th>
-                <th>Año</th>
-            </tr>
-            </thead>
-            <tbody>
+</main>
 
-            <?php
-            if (isset($historial)){
-                foreach ($historial as $valor1){
-                    ?>
-                    <tr>
-                        <td><?php echo $valor1["aciertos"];?></td>
-                        <td><?php echo $valor1["dia"];?></td>
-                        <td><?php echo $valor1["semana"];?></td>
-                        <td><?php echo $valor1["anio"];?></td>
-                    </tr>
-                    <?php
-                }
-            }
-            ?>
-            </tbody>
-        </table>
-    </div>
-    <form name="form" action="" method="post" enctype="multipart/form-data">
-        <button class="btn btn-success form-control" style="margin-bottom: 3%;" id="guardar">Actualizar Datos</button>
-    </form>
-    </div>
-</div>
-
-<script src="../../../repo/Public/js/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script src="../../../repo/Public/js/foto.js"></script>
 </body>
 </html>

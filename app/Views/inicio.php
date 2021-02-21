@@ -38,7 +38,6 @@ if($varsesion==null || $varsesion=''){
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">DIA</a>
                             <a class="dropdown-item" href="#">SEMANA</a>
-                            <a class="dropdown-item" href="#">MES</a>
                             <a class="dropdown-item" href="#">TOP 10</a>
                         </div>
                     </li>
@@ -54,7 +53,7 @@ if($varsesion==null || $varsesion=''){
                             ?>
                         </a>
                         <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=perfil">Perfil</a>
+                            <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=perfil&id=<?php echo $_SESSION["idUsuario"];?>">Perfil</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=logout">Cerrar Sesion</a>
                         </div>
@@ -68,7 +67,82 @@ if($varsesion==null || $varsesion=''){
             <form action="index.php?controller=Usuario&action=cuestionario" method="post" class="col-md-12">
                 <button class="btn btn-primary form-control" style="margin-bottom: 3%;" id="guardar"> Contestar Cuestionario</button>
             </form>
-        <div class="col-md-3">
+    </div>
+    <div class="row">
+        <div class="row col-md-12">
+            <h1 class="text-center col-md-12">TOP 10</h1>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center col-md-12">HOMBRES</h2>
+            <table class="table table-hover table-active" border="1">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                if (isset($top)){
+                    if(isset($hombre)){
+                        foreach ($top as $valor){
+                            foreach ($hombre as $valor1){
+                                if ($valor1["id_usuario"]==$valor["id_Usuario"] && $valor1["genero"]=="H"){
+                                    ?>
+                            <tr>
+                                <td><?php echo $valor1["nombre"];?></td>
+                                <td><?php echo $valor1["apellido_paterno"];?></td>
+                                <td><?php echo $valor1["apellido_materno"];?></td>
+                            </tr>
+                                    <?php
+                                }
+                            }
+                        }
+                    }
+                }
+                ?>
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center">MUJERES</h2>
+            <table class="table table-hover table-active" border="1">
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <?php
+                if (isset($top)){
+                    if(isset($hombre)){
+                        foreach ($top as $valor){
+                            foreach ($hombre as $valor1){
+                                if ($valor1["id_usuario"]==$valor["id_Usuario"] && $valor1["genero"]=="M"){
+                                    ?>
+                <tr>
+                    <td><?php echo $valor1["nombre"];?></td>
+                    <td><?php echo $valor1["apellido_paterno"];?></td>
+                    <td><?php echo $valor1["apellido_materno"];?></td>
+                </tr>
+                <?php
+                                }
+                            }
+                        }
+                    }
+                }
+                ?>
+                </tr>
+
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <?php
 require 'app/Models/Usuario.php';
 use Models\Usuario;
+
 class UsuarioController
 {
     function __construct()
@@ -10,7 +11,7 @@ class UsuarioController
     function registro(){
         require "app/Views/registro.php";
     }
-    //verifica eñ registro de usuario
+    //verifica del registro de usuario
     function verificarRegistro(){
         $correo=&$_POST["correo"];
         $verificar = Usuario::verificarCorreo($correo);
@@ -23,6 +24,7 @@ class UsuarioController
             $usario->apellidoPaterno=$_POST["paterno"];
             $usario->apellidoMaterno=$_POST["materno"];
             $usario->correo=$_POST["correo"];
+            $usario->genero=$_POST["genero"];
             $usario->contrasenia=password_hash($_POST["contrasenia"],PASSWORD_DEFAULT,['cost' => 5]);
             $usario->foto=$binariosImagen;
             $usario->tipo='image/jpg';
@@ -38,10 +40,15 @@ class UsuarioController
         require "app/Views/login.php";
     }
     function perfil(){
+        $historial=Usuario::historial($_GET["id"]);
         require 'app/Views/perfil.php';
     }
     //muestra inicio y carga los datos de productos
     function dologin(){
+        $top=Usuario::top();
+        $hombre=Usuario::usuarios();
+
+
        require 'app/Views/inicio.php';
     }
     //cerrar sesion
@@ -82,7 +89,7 @@ class UsuarioController
     //actualizar foto de perfil
     function actualizarFoto(){
         $usuario = new Usuario();
-
+        $id=$_GET["id"];
         $nombre=$_FILES['image']['name'];
         $tamanio=$_FILES['image']['size'];
         $imagenSubida=fopen($_FILES['image']['tmp_name'],'r');
@@ -93,9 +100,13 @@ class UsuarioController
         session_start();
         $_SESSION["foto"]=$binarioImagen;
         $_SESSION["tipo"]=$_FILES['image']['type'];
-        header("location:../../../test/index.php?controller=Usuario&action=perfil");
+        header("location:../../../test/index.php?controller=Usuario&action=perfil&id=$id");
     }
     function cuestionario(){
         require 'app/Views/Cuestionario.php';
+    }
+    function resultado(){
+
+        require 'app/Views/resultado.php';
     }
 }

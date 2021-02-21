@@ -24,7 +24,7 @@ if(isset($_SESSION["idUsuario"])){
     <div class="container col-md-offset-4 col-md-4" id="contenedor-2">
         <div class="panel panel-body col-md-12" id="formulario">
             <br>
-            <center><img src="../../../../repo/Public/img/1.png" alt="usuario" width="70px"></center>
+            <h3 class="text-center">REGISTRO</h3>
             <form name="form" action="index.php?controller=Usuario&action=verificarRegistro" method="post" enctype="multipart/form-data">
                 <div class="row" id="col">
                     <div class="col-md-12">
@@ -43,6 +43,16 @@ if(isset($_SESSION["idUsuario"])){
                         <div class="form-group">
                             <label for="materno">Apellido Materno: </label>
                             <input type="text" name="materno" id="materno" class="form-control" placeholder="Apellido Materno" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="genero">GENERO: </label>
+                            <select name="genero" class="form-control" id="genero">
+                                <option value="" selected="selected">--Seleccionar Genero--</option>
+                                <option value="H" name="genero">Hombre</option>
+                                <option value="M" name="genero">Mujer</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -68,8 +78,6 @@ if(isset($_SESSION["idUsuario"])){
                             <label for="contrasenia">Contraseña:</label>
                             <input type="password" id="contrasenia-1" name="contrasenia" placeholder="Contraseña" required class="form-control">
                             <span id="mensaje"></span>
-                            <br>
-                            <span id="alerta" role="alert"><strong>!</strong> La contraseña debe contener al menos 6 caracteres</span>
                         </div>
                     </div>
 
@@ -98,7 +106,7 @@ if(isset($_SESSION["idUsuario"])){
 <script src="../../../repo/Public/js/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="../../../repo/Public/js/verificacion.js"></script>
-<script src="../../../repo/Public/js/contrasenia.js"></script>
+<script src="../../../test/Public/js/verificacion.js"></script>
+<script src="../../../test/Public/js/contrasenia.js"></script>
 </body>
 </html>

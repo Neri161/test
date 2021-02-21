@@ -39,7 +39,6 @@ if($varsesion==null || $varsesion=''){
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">DIA</a>
                     <a class="dropdown-item" href="#">SEMANA</a>
-                    <a class="dropdown-item" href="#">MES</a>
                     <a class="dropdown-item" href="#">TOP 10</a>
                 </div>
             </li>
@@ -55,7 +54,7 @@ if($varsesion==null || $varsesion=''){
                     ?>
                 </a>
                 <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=perfil">Perfil</a>
+                    <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=perfil&id=<?php echo $_SESSION["idUsuario"];?>">Perfil</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=logout">Cerrar Sesion</a>
                 </div>
@@ -64,20 +63,20 @@ if($varsesion==null || $varsesion=''){
     </div>
 </nav>
 <div class="container" id="contenedor">
-    <form action="index.php?controller=Respuestas&action=verificarRespuestas" method="post">
+    <form action="index.php?controller=Respuestas&action=verificarRespuestas&idUsuario=<?php echo $_SESSION["idUsuario"];?>" method="post" name="formulario" id="formulario">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-check">
-                    <label for="rio">1.¿Cuál es el Río más largo del mundo?</label>
+                    <label>1. ¿Cuál es el Río más largo del mundo?</label>
                     <br>
                     <input class="form-check-input" name="1" type="radio" value="1" id="rio1">
-                    <label class="form-check-label" for="rio">El Amazonas</label>
+                    <label class="form-check-label" for="rio1">El Amazonas</label>
                     <br>
                     <input class="form-check-input" name="1"  type="radio" value="0" id="rio2">
-                    <label class="form-check-label" for="rio">Misisipi</label>
+                    <label class="form-check-label" for="rio2">Misisipi</label>
                     <br>
                     <input class="form-check-input" name="1" type="radio" value="0" id="rio3">
-                    <label class="form-check-label" for="rio">Nilo</label>
+                    <label class="form-check-label" for="rio3">Nilo</label>
                 </div>
                 <div class="form-check">
                     <label for="rio">2. ¿Dónde originaron los juegos olímpicos?</label>
@@ -134,7 +133,7 @@ if($varsesion==null || $varsesion=''){
             </div>
             <div class="col-md-6">
                 <div class="form-check">
-                    <label for="rio">6.¿Cuál es tercer planeta en el sistema solar?</label>
+                    <label for="rio">6. ¿Cuál es tercer planeta en el sistema solar?</label>
                     <br>
                     <input class="form-check-input" type="radio" name="6" value="0" id="planeta">
                     <label class="form-check-label" for="planeta">Marte</label>
@@ -200,13 +199,14 @@ if($varsesion==null || $varsesion=''){
             </div>
         </div>
         <br>
-        <button class="btn-success form-control" id="guardar">Guardar</button>
+        <button class="btn-success form-control" id="guardar2">Guardar</button>
         <br>
     </form>
 </div>
-
+<script src="../../../test/public/js/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="../../../test/public/js/verificacion.js"></script>
 </body>
 </html>
