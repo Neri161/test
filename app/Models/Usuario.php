@@ -25,7 +25,16 @@ class Usuario extends Conexion
         $pre = mysqli_prepare($this->conexion, "INSERT INTO usuarios (nombre,apellido_paterno,apellido_materno, genero ,correo,contrasenia,fecha_registro,foto,tipo) VALUES(?,?,?,?,?,?,?,?,?)");
         $pre->bind_param("sssssssss", $this->nombre, $this->apellidoPaterno, $this->apellidoMaterno,$this->genero ,$this->correo, $this->contrasenia, $this->fecha_registro,$this->foto,$this->tipo);
         $pre->execute();
-    }//actualizar foto
+    }
+    //actualizar usuario
+    function actualizar($id)
+    {
+        $pre = mysqli_prepare($this->conexion, "UPDATE usuarios SET nombre=?,apellido_paterno=?,apellido_materno=? WHERE id_usuario=?");
+        $pre->bind_param("ssss", $this->nombre, $this->apellidoPaterno, $this->apellidoMaterno,$id);
+        $pre->execute();
+    }
+
+    //actualizar foto
     function actualizarFoto($id)
     {
         $pre = mysqli_prepare($this->conexion, "UPDATE usuarios SET foto=?,tipo=? WHERE id_usuario=?");
@@ -126,6 +135,21 @@ class Usuario extends Conexion
             $t[]=$y;
         }
         return $t;
+    }
+    //insertar usuario
+    static function eliminarR($id)
+    {
+        $conexion = new Conexion();
+        $pre = mysqli_prepare($conexion->conexion, "DELETE FROM respuestas WHERE id_Usuario=?");
+        $pre->bind_param("s", $id);
+        $pre->execute();
+    }
+    static function eliminarU($id)
+    {
+        $conexion = new Conexion();
+        $pre = mysqli_prepare($conexion->conexion, "DELETE FROM usuarios WHERE id_Usuario=?");
+        $pre->bind_param("s", $id);
+        $pre->execute();
     }
 
 }

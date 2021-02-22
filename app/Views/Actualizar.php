@@ -62,68 +62,32 @@ if($varsesion==null || $varsesion=''){
 </nav>
 <div class="container">
     <br>
-    <form action="index.php?controller=Usuario&action=actualizarFoto&id=<?php echo $_SESSION['idUsuario']; ?>" method="post" enctype="multipart/form-data">
-        <div class="image-upload">
-            <center><label for="file-input">
-                    <img  src="data:<?php echo $_SESSION['tipo']; ?>;base64,<?php echo  base64_encode($_SESSION['foto']); ?>" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto">
-                </label></center>
-            <input id="file-input" name="image" type="file" required/>
-        </div>
-        <div class="mostrar" id="mostrar">
-            <center><button  class="btn btn-success form-control col-md-3" style="margin-bottom: 3%;" id="guardar">Actualizar Foto</button></center>
-        </div>
-
-    </form>
-    <br>
+    <div class="row">
+        <form action="index.php?controller=Usuario&action=verificarDatos&id=<?php echo $_SESSION["idUsuario"];?>" method="post" class="col-md-12">
             <div class="row">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="nombre">Nombre: </label>
-                    <input type="text" name="nombre" id="nombre" readonly class="form-control" placeholder="Nombre" required value="<?php echo $_SESSION['nombre']; ?>">
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required value="<?php echo $_SESSION['nombre']; ?>">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="paterno">Apellido Paterno: </label>
-                    <input type="text" name="paterno" id="paterno" readonly class="form-control" placeholder="Apellido Paterno" required value="<?php echo $_SESSION['apellidoPaterno']; ?>">
+                    <input type="text" name="paterno" id="paterno" class="form-control" placeholder="Apellido Paterno" required value="<?php echo $_SESSION['apellidoPaterno']; ?>">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="materno">Apellido Materno: </label>
-                    <input type="text" name="materno" id="materno" readonly class="form-control" placeholder="Apellido Materno" required value="<?php echo $_SESSION['apellidoMaterno']; ?>">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="correo">Correo:</label>
-                    <input type="email" id="correo" name="correo" readonly class="form-control" value="<?php echo $_SESSION['correo']; ?>">
+                    <input type="text" name="materno" id="materno" class="form-control" placeholder="Apellido Materno" required value="<?php echo $_SESSION['apellidoMaterno']; ?>">
                 </div>
             </div>
-    <div class="row">
-        <h2 class="text-center col-md-12">HISTORIAL</h2>
-        <table class="table table-hover table-active" border="1">
-            <thead>
-            <tr>
-                <th>Aciertos</th>
-                <th>Dia</th>
-                <th>Semana</th>
-                <th>Año</th>
-            </tr>
-            </thead>
-            <tbody>
-
-            <?php
-            if (isset($historial)){
-                foreach ($historial as $valor1){
-                    ?>
-                    <tr>
-                        <td><?php echo $valor1["aciertos"];?></td>
-                        <td><?php echo $valor1["dia"];?></td>
-                        <td><?php echo $valor1["semana"];?></td>
-                        <td><?php echo $valor1["anio"];?></td>
-                    </tr>
-                    <?php
-                }
-            }
-            ?>
-            </tbody>
-        </table>
+            <button class="btn btn-success form-control" style="margin-bottom: 3%;" id="guardar">Actualizar Datos</button>
+        </form>
+        <br>
+        <form action="index.php?controller=Usuario&action=eliminar&id=<?php echo $_SESSION["idUsuario"];?>" method="post" class="col-md-12">
+            <button class="btn btn-danger form-control" style="margin-bottom: 3%;" id="Eliminar">Eliminar Perfil</button>
+        </form>
     </div>
-    <a href="index.php?controller=Usuario&action=actualizarDatos">Actualizar Perfil </a>
+
+
+</div>
 </div>
 
 <script src="../../../test/public/js/jquery.min.js"></script>

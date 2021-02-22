@@ -166,5 +166,29 @@ class UsuarioController
 
         require 'app/Views/dia.php';
     }
+    function actualizarDatos(){
+        require 'app/Views/Actualizar.php';
+    }
+    function verificarDatos(){
+        $usario = new Usuario();
+        $id=$_GET["id"];
+        $usario->nombre=$_POST["nombre"];
+        $usario->apellidoPaterno=$_POST["paterno"];
+        $usario->apellidoMaterno=$_POST["materno"];
+        $usario->actualizar($id);
+        session_start();
+        $_SESSION["nombre"]=$_POST["nombre"];
+        $_SESSION["apellidoPaterno"]=$_POST["paterno"];
+        $_SESSION["apellidoMaterno"]=$_POST["materno"];
+        header("location:../../../test/index.php?controller=Usuario&action=perfil&id=$id");
+    }
+    function eliminar(){
+        $id=$_GET["id"];
+        $eliminarR=Usuario::eliminarR($id);
+        $eliminarU=Usuario::eliminarU($id);
+        session_start();
+        session_destroy();
+        header("location:../../../test/index.php?controller=Usuario&action=login");
+    }
 
 }
