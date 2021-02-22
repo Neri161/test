@@ -18,7 +18,7 @@ if($varsesion==null || $varsesion=''){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inicio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../../../repo/Public/css/inicio.css">
+    <link rel="stylesheet" type="text/css" href="../../../test/public/css/inicio.css">
 </head>
 <body>
 <!-- Navbar en la parte superior que se deliza lo largo de la pagina -->
@@ -33,12 +33,10 @@ if($varsesion==null || $varsesion=''){
                     <!--Menu desplegable -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            TOP
+                            Promedio
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=dia">DIA</a>
-                            <a class="dropdown-item" href="#">SEMANA</a>
-                            <a class="dropdown-item" href="#">TOP 10</a>
+                            <a class="dropdown-item" href="../../../test/index.php?controller=Usuario&action=dia">Semana/Dia</a>
                         </div>
                     </li>
                 </ul>

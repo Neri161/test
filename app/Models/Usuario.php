@@ -96,11 +96,10 @@ class Usuario extends Conexion
         }
         return $t;
     }
-    static function semana(){
-        $dia=(int)date("W");
+    static function semana($semana){
         $conexion = new Conexion();
         $pre = mysqli_prepare($conexion->conexion,"SELECT * FROM respuestas where semana=?");
-        $pre->bind_param("i", $dia);
+        $pre->bind_param("i", $semana);
         $pre->execute();
         $resultado=$pre->get_result();
         while ($y=mysqli_fetch_assoc($resultado)){
@@ -108,4 +107,25 @@ class Usuario extends Conexion
         }
         return $t;
     }
+    static function semanas(){
+        $conexion = new Conexion();
+        $pre = mysqli_prepare($conexion->conexion,"SELECT DISTINCT semana FROM respuestas");
+        $pre->execute();
+        $resultado=$pre->get_result();
+        while ($y=mysqli_fetch_assoc($resultado)){
+            $t[]=$y;
+        }
+        return $t;
+    }
+    static function semanaElegida($semana){
+        $conexion = new Conexion();
+        $pre = mysqli_prepare($conexion->conexion,"SELECT DISTINCT semana FROM respuestas");
+        $pre->execute();
+        $resultado=$pre->get_result();
+        while ($y=mysqli_fetch_assoc($resultado)){
+            $t[]=$y;
+        }
+        return $t;
+    }
+
 }

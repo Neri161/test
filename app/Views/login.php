@@ -16,7 +16,7 @@ error_reporting(0);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Iniciar Sesion</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="../../../repo/Public/css/estilos.css">
-    <link rel="stylesheet" type="text/css" href="../../../repo/Public/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="../../../test/public/css/estilos.css">
 </head>
 <body>
 

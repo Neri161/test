@@ -110,9 +110,15 @@ class UsuarioController
         require 'app/Views/resultado.php';
     }
     function dia(){
+        if(isset($_POST["semanas"])){
+            $semanaElegida = $_POST["semanas"];
+        }else{
+            $semanaElegida = (int)date("W");
+        }
         $dia=Usuario::dia();
-        $semana=Usuario::semana();
+        $semana=Usuario::semana($semanaElegida);
         $usuario=Usuario::usuarios();
+        $semanas=Usuario::semanas();
         $hombres=0;
         $mujeres=0;
         $aciertos=0;
@@ -124,7 +130,7 @@ class UsuarioController
                 }
             }
         }
-        $promedioHD=$aciertos/$hombres;
+        $promedioHD=round($aciertos/$hombres,2);
         $aciertos=0;
         foreach ($dia as $valor){
             foreach ($usuario as $valor1){
@@ -134,7 +140,7 @@ class UsuarioController
                 }
             }
         }
-        $promedioMD=$aciertos/$mujeres;
+        $promedioMD=round($aciertos/$mujeres,2);
         $hombres=0;
         $mujeres=0;
         $aciertos=0;
@@ -146,7 +152,7 @@ class UsuarioController
                 }
             }
         }
-        $promedioHS=$aciertos/$hombres;
+        $promedioHS=round($aciertos/$hombres,2);
         $aciertos=0;
         foreach ($semana as $valor){
             foreach ($usuario as $valor1){
@@ -156,7 +162,9 @@ class UsuarioController
                 }
             }
         }
-        $promedioMS=$aciertos/$mujeres;
+        $promedioMS=round($aciertos/$mujeres,2);
+
         require 'app/Views/dia.php';
     }
+
 }
