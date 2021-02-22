@@ -24,7 +24,7 @@ error_reporting(0);
     <div class="container col-md-offset-4 col-md-4" id="contenedor-2">
         <div class="panel panel-body col-md-12" id="formulario">
             <br>
-            <center><img class="img-responsive col-4" src="../../../../repo/Public/img/1.png" alt="usuario" width="70px"></center>
+            <h1 class="text-center">INICIO DE SESION</h1>
             <?php
             if(isset($estatus)){
                 echo '<h5 class="alert-danger text-center">'.$estatus.'</h5>';
