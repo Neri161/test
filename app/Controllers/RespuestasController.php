@@ -5,7 +5,6 @@ use Models\Respuestas;
 class RespuestasController
 {
     function verificarRespuestas(){
-        $resultado=new Respuestas();
         $resultado=0;
         if ($_POST["1"])
             $resultado+=1;
@@ -37,7 +36,6 @@ class RespuestasController
         session_start();
         $_SESSION["respuesta"]=$resultadoAnterior->aciertos;
         $_SESSION["aciertos"]=$resultado;
-        echo  var_dump($_SESSION["respuesta"]);
         $respuesta->crear();
         header("location:../../../test/index.php?controller=Usuario&action=resultado");
 

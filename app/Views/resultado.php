@@ -73,7 +73,6 @@ if($varsesion==null || $varsesion=''){
         $comparacion=$comparacion*(-1);
         ?>
         <h1 class="text-center" style="color: orange;">LE GANASTE AL USUARIO ANTERIOR POR <?php echo $comparacion;?></h1>
-
         <?php
     }
     if ($comparacion==0){

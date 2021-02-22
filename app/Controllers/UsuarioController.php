@@ -47,8 +47,6 @@ class UsuarioController
     function dologin(){
         $top=Usuario::top();
         $hombre=Usuario::usuarios();
-
-
        require 'app/Views/inicio.php';
     }
     //cerrar sesion
@@ -106,7 +104,6 @@ class UsuarioController
         require 'app/Views/Cuestionario.php';
     }
     function resultado(){
-
         require 'app/Views/resultado.php';
     }
     function dia(){
